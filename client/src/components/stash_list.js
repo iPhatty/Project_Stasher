@@ -6,7 +6,9 @@ import StashCard from './stash_card';
 
 const ListContainer = styled.ul`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
+  padding: 1rem;
+  margin: 0;
 `;
 
 const StashList = props => {
@@ -26,8 +28,12 @@ const StashList = props => {
   // render unordered list
   return (
     <div>
-      {props.stashPoints.length > 0 && <SortList />}
-      <ListContainer>{cardList}</ListContainer>
+      {props.stashPoints.length > 0 && <SortList sortList={props.sortList} />}
+      {props.stashPoints.length > 0 ? (
+        <ListContainer>{cardList}</ListContainer>
+      ) : (
+        <p>{props.error.city}</p>
+      )}
     </div>
   );
 };
