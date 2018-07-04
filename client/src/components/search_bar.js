@@ -6,14 +6,17 @@ const SearchContainer = styled.div`
   justify-content: center;
 `;
 
-const StyledInput = styled.input`
+const Form = styled.form``;
+
+const Input = styled.input`
   font-size: 1rem;
   padding: 0.5rem;
   width: 12rem;
 `;
 
-export default class SearchBar extends Component {
+const Button = styled.button``;
 
+export default class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,14 +26,20 @@ export default class SearchBar extends Component {
 
   onInputChange = event => {
     this.setState({ inputValue: event.target.value });
-  }
+  };
+
+  searchSubmit = event => {
+    event.preventDefault();
+    this.props.onSearchSubmit(this.state.inputValue);
+  };
 
   render() {
     return (
       <SearchContainer>
-        <StyledInput
-        value={this.state.inputValue}
-        onChange={this.onInputChange} />
+        <Form onSubmit={this.searchSubmit}>
+          <Input value={this.state.inputValue} onChange={this.onInputChange} />
+          <Button>Submit</Button>
+        </Form>
       </SearchContainer>
     );
   }
