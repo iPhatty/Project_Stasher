@@ -17,30 +17,30 @@ class App extends Component {
     const fetchUrl = `https://api-staging.stasher.com/v1/stashpoints?city=${searchValue}`;
 
     fetch(fetchUrl)
-    .then(response => {
-      if (!response.ok) {
-        // Check status code
-        console.log(
-          'Looks like there was a problem. Status Code: ' + response.status
-        );
-        // Return nothing
-        return;
-      } else {
-        // Return response.json()
-        return response.json();
-      }
-    })
-    .then(data => {
-      // data is an array of stashpoints received from API
-      this.setState({ stashPoints: data });
-    });
+      .then(response => {
+        if (!response.ok) {
+          // Check status code
+          console.log(
+            'Looks like there was a problem. Status Code: ' + response.status
+          );
+          // Return nothing
+          return;
+        } else {
+          // Return response.json()
+          return response.json();
+        }
+      })
+      .then(data => {
+        // data is an array of stashpoints received from API
+        this.setState({ stashPoints: data });
+      });
   };
 
   render() {
     return (
       <div>
-        <SearchBar onSearchSubmit={ this.citySearch } />
-        <StashList />
+        <SearchBar onSearchSubmit={this.citySearch} />
+        <StashList stashPoints={this.state.stashPoints} />
       </div>
     );
   }
