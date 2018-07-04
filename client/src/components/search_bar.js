@@ -13,6 +13,13 @@ const StyledInput = styled.input`
 `;
 
 export default class SearchBar extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ''
+    };
+  }
   render() {
     return (
       <SearchContainer>
