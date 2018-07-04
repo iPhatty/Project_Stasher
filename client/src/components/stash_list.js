@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import SortList from './sort_dropdown';
 import StashCard from './stash_card';
 
 const ListContainer = styled.ul`
@@ -23,7 +24,12 @@ const StashList = props => {
   });
 
   // render unordered list
-  return <ListContainer>{cardList}</ListContainer>;
+  return (
+    <div>
+      {props.stashPoints.length > 0 && <SortList />}
+      <ListContainer>{cardList}</ListContainer>
+    </div>
+  );
 };
 
 export default StashList;
