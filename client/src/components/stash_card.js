@@ -8,10 +8,15 @@ const CardContainer = styled.div`
   border-radius: 5px;
 `;
 
+const Img = styled.img`
+  width: 100px;
+`;
+
 const StashCard = props => {
   const { name, status, location, photoUrl } = props;
   return (
     <CardContainer>
+      <Img src={photoUrl} alt={name} />
       <p>{name}</p>
       <p>{status}</p>
       <p>{location}</p>
