@@ -6,9 +6,9 @@ const SearchContainer = styled.div`
   justify-content: center;
 `;
 
-const StyledForm = styled.form``;
+const Form = styled.form``;
 
-const StyledInput = styled.input`
+const Input = styled.input`
   font-size: 1rem;
   padding: 0.5rem;
   width: 12rem;
@@ -36,13 +36,10 @@ export default class SearchBar extends Component {
   render() {
     return (
       <SearchContainer>
-        <StyledForm onSubmit={this.searchSubmit}>
-          <StyledInput
-            value={this.state.inputValue}
-            onChange={this.onInputChange}
-          />
+        <Form onSubmit={this.searchSubmit}>
+          <Input value={this.state.inputValue} onChange={this.onInputChange} />
           <Button>Submit</Button>
-        </StyledForm>
+        </Form>
       </SearchContainer>
     );
   }
