@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class StashList extends Component {
-  render() {
-    return (
-      <ul>
-        StashList
-      </ul>
-    )
-  }
-}
+import StashCard from './stash_card';
+
+const StashList = props => {
+  const cardList = <StashCard />;
+  return <ul>{cardList}</ul>;
+};
+
+export default StashList;
