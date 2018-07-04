@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import apiFetch from './utils/api_fetch';
 
 import SearchBar from './components/search_bar';
 import StashList from './components/stash_list';
+
+const AppContainer = styled.div`
+  margin: 0 auto;
+  max-width: 600px;
+`;
 
 class App extends Component {
   constructor(props) {
@@ -57,7 +63,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <AppContainer>
         <SearchBar onSearchSubmit={this.citySearch} />
         <StashList
           stashPoints={this.state.stashPoints}
@@ -65,7 +71,7 @@ class App extends Component {
           error={this.state.error}
         />
         {this.state.error.fetch && <p>this.state.error.fetch</p>}
-      </div>
+      </AppContainer>
     );
   }
 }

@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+const DropContainer = styled.div`
+  padding-left: 1rem;
+`;
 
 export default class SortList extends Component {
   constructor(props) {
@@ -17,7 +22,7 @@ export default class SortList extends Component {
 
   render() {
     return (
-      <div>
+      <DropContainer>
         <label>
           Sort By:
           <select
@@ -29,7 +34,7 @@ export default class SortList extends Component {
             <option value="by_capacity:asc">Capacity Ascending</option>
           </select>
         </label>
-      </div>
+      </DropContainer>
     );
   }
 }

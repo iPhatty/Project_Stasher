@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const SearchContainer = styled.div`
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
 `;
@@ -15,6 +16,8 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
+  font-size: 1rem;
+  color: #fefefe;
   border-radius: 0.5rem;
   background-color: rgb(2, 112, 230);
 `;
