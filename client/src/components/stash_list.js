@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import SortList from './sort_dropdown';
 import StashCard from './stash_card';
 
 const ListContainer = styled.ul`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+  padding: 1rem;
+  margin: 0;
 `;
 
 const StashList = props => {
@@ -23,7 +27,17 @@ const StashList = props => {
   });
 
   // render unordered list
-  return <ListContainer>{cardList}</ListContainer>;
+  // Only render sorting list if more than one result has been returned
+  return (
+    <div>
+      {props.stashPoints.length > 1 && <SortList sortList={props.sortList} />}
+      {props.stashPoints.length > 0 ? (
+        <ListContainer>{cardList}</ListContainer>
+      ) : (
+        <p>{props.error.city}</p>
+      )}
+    </div>
+  );
 };
 
 export default StashList;
