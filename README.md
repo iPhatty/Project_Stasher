@@ -1,5 +1,5 @@
-# Project Stasher [https://project-stasher.netlify.com/](https://project-stasher.netlify.com/);
-# Best viewed on mobile
+# Project Stasher - Best viewed on mobile: [https://project-stasher.netlify.com/](https://project-stasher.netlify.com/);
+
 Boilerplate used : [Create React App](https://github.com/facebook/create-react-app);
 
 ## Hosted on netlify by:
