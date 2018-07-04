@@ -32,7 +32,7 @@ class App extends Component {
       })
       .then(data => {
         // data is an array of stashpoints received from API
-        this.setState({ stashPoints: data });
+        this.setState({ stashPoints: data, selectedPoint: searchValue });
       });
   };
 
