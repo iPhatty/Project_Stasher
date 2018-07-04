@@ -14,7 +14,10 @@ const Input = styled.input`
   width: 12rem;
 `;
 
-const Button = styled.button``;
+const Button = styled.button`
+  border-radius: 0.5rem;
+  background-color: rgb(2, 112, 230);
+`;
 
 export default class SearchBar extends Component {
   constructor(props) {
