@@ -44,7 +44,10 @@ export default class SearchBar extends Component {
     return (
       <SearchContainer>
         <Form onSubmit={this.searchSubmit}>
-          <Input value={this.state.inputValue} onChange={this.onInputChange} />
+          <Input 
+          value={this.state.inputValue} 
+          onChange={this.onInputChange} 
+          placeholder="Enter a city" />
           <Button>Submit</Button>
         </Form>
       </SearchContainer>
