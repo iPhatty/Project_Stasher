@@ -20,10 +20,17 @@ export default class SearchBar extends Component {
       inputValue: ''
     };
   }
+
+  onInputChange = event => {
+    this.setState({ inputValue: event.target.value });
+  }
+
   render() {
     return (
       <SearchContainer>
-        <StyledInput />
+        <StyledInput
+        value={this.state.inputValue}
+        onChange={this.onInputChange} />
       </SearchContainer>
     );
   }
