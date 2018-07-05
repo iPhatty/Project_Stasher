@@ -8,9 +8,7 @@ import StashCard from './stash_card';
 const ListContainer = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 1rem;
   padding: 1rem;
-  margin: 0;
 `;
 
 const StashList = props => {
