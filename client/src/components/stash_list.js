@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SortList from './sort_dropdown';
+import FilterList from './filter_list';
 import StashCard from './stash_card';
 
 const ListContainer = styled.ul`
@@ -30,7 +31,12 @@ const StashList = props => {
   // Only render sorting list if more than one result has been returned
   return (
     <div>
-      {props.stashPoints.length > 1 && <SortList sortList={props.sortList} />}
+      {props.stashPoints.length > 1 && (
+        <div>
+          <FilterList />
+          <SortList sortList={props.sortList} />
+        </div>
+      )}
       {props.stashPoints.length > 0 ? (
         <ListContainer>{cardList}</ListContainer>
       ) : (
