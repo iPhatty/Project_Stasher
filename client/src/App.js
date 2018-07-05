@@ -21,10 +21,7 @@ class App extends Component {
         city: undefined,
         sort: undefined
       },
-      error: {
-        fetch: null,
-        city: null
-      }
+      error: {}
     };
   }
 
@@ -45,7 +42,7 @@ class App extends Component {
       .then(data => {
         // data is an array of stashpoints received from API
         if (data.length > 0) {
-          this.setState({ stashPoints: data });
+          this.setState({ stashPoints: data, error: {} });
         } else {
           this.setState({
             error: { city: 'Your search returned no results' }
@@ -60,13 +57,30 @@ class App extends Component {
   };
 
   listSort = selectedValue => {
-    // switch which takes selected option from dropdown list the create Api search query
+    // switch which takes selected option from dropdown list to create Api search query
     this.setState(
-      prevState => {
+      ({ query }) => {
         return {
           query: {
-            city: prevState.query.city,
+            ...query,
             sort: selectedValue
+          }
+        };
+      },
+      () => {
+        this.apiCall(this.state.query);
+      }
+    );
+  };
+
+  listFilter = selectedValue => {
+    // switch which takes selected option from filters list to create Api search query
+    this.setState(
+      ({ query }) => {
+        return {
+          query: {
+            ...query,
+            ...selectedValue
           }
         };
       },
@@ -82,7 +96,8 @@ class App extends Component {
         <SearchBar onSearchSubmit={this.citySearch} />
         <StashList
           stashPoints={this.state.stashPoints}
-          sortList={this.listSort}
+          listSort={this.listSort}
+          listFilter={this.listFilter}
           error={this.state.error}
         />
         {this.state.error.fetch && <p>this.state.error.fetch</p>}

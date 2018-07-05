@@ -23,6 +23,7 @@ const StashList = props => {
         status={stashpoint.status}
         location={stashpoint.location_name}
         photoUrl={stashpoint.photos[0]}
+        capacity={stashpoint.capacity}
       />
     );
   });
@@ -33,14 +34,14 @@ const StashList = props => {
     <div>
       {props.stashPoints.length > 1 && (
         <div>
-          <FilterList />
-          <SortList sortList={props.sortList} />
+          <FilterList filterList={props.listFilter} />
+          <SortList sortList={props.listSort} />
         </div>
       )}
-      {props.stashPoints.length > 0 ? (
-        <ListContainer>{cardList}</ListContainer>
-      ) : (
+      {Object.keys(props.error).length > 0 ? (
         <p>{props.error.city}</p>
+      ) : (
+        <ListContainer>{cardList}</ListContainer>
       )}
     </div>
   );
