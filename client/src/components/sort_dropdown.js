@@ -27,9 +27,11 @@ export default class SortList extends Component {
           Sort By:
           <select
             onChange={this.onSortChange}
-            value={this.state.optionValue ? this.state.optionValue : 'default'}
+            value={this.state.optionValue ? this.state.optionValue : 'Default'}
           >
-            <option value="default">Default</option>
+            <option value="Default" disabled>
+              Sort By
+            </option>
             <option value="by_capacity:desc">Capacity Descending</option>
             <option value="by_capacity:asc">Capacity Ascending</option>
           </select>
