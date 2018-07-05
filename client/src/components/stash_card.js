@@ -4,8 +4,21 @@ import styled from 'styled-components';
 const CardContainer = styled.div`
   padding: 3%;
   background-color: #fbfbfb;
-  box-shadow: 2px 2px 10px rgb(2, 112, 230);
+  box-shadow: 1px 1px 1px rgb(2, 112, 230);
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Info = styled.div`
+  width: 90%;
+  padding: 0.3rem;
+  font-size: 0.8rem;
+`;
+
+const Text = styled.p`
+  margin: 0;
 `;
 
 const Img = styled.img`
@@ -13,14 +26,27 @@ const Img = styled.img`
 `;
 
 const StashCard = props => {
-  const { name, status, location, photoUrl, capacity } = props;
+  const {
+    name,
+    status,
+    location,
+    photoUrl,
+    capacity,
+    address,
+    postalCode
+  } = props;
   return (
     <CardContainer>
       <Img src={photoUrl} alt={name} />
-      <p>{name}</p>
-      <p>{status}</p>
-      <p>{location}</p>
-      <p>Capacity:{capacity}</p>
+      <Info>
+        <Text>
+          {name} - {status}
+        </Text>
+        <Text>{location}</Text>
+        <Text>{address}</Text>
+        <Text>{postalCode}</Text>
+        <Text>Capacity:{capacity}</Text>
+      </Info>
     </CardContainer>
   );
 };

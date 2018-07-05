@@ -12,6 +12,11 @@ const AppContainer = styled.div`
   max-width: 600px;
 `;
 
+const Header = styled.h1`
+  color: rgb(2, 112, 230);
+  text-align: center;
+`;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -93,6 +98,7 @@ class App extends Component {
   render() {
     return (
       <AppContainer>
+        <Header>Project Stasher</Header>
         <SearchBar onSearchSubmit={this.citySearch} />
         <StashList
           stashPoints={this.state.stashPoints}
