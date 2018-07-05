@@ -24,6 +24,8 @@ const StashList = props => {
         location={stashpoint.location_name}
         photoUrl={stashpoint.photos[0]}
         capacity={stashpoint.capacity}
+        address={stashpoint.address}
+        postalCode={stashpoint.postal_code}
       />
     );
   });

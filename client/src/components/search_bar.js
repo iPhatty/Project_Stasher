@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const SearchContainer = styled.div`
-  margin-top: 1rem;
+  margin: 1rem 0;
   display: flex;
   justify-content: center;
 `;
@@ -13,6 +13,9 @@ const Input = styled.input`
   font-size: 1rem;
   padding: 0.5rem;
   width: 12rem;
+  border-radius: 0.5rem;
+  border-style: none;
+  border: 1px solid #2f3640;
 `;
 
 const Button = styled.button`
@@ -21,6 +24,7 @@ const Button = styled.button`
   border-radius: 0.5rem;
   border-style: none;
   background-color: rgb(2, 112, 230);
+  height: 100%;
 `;
 
 export default class SearchBar extends Component {
@@ -44,10 +48,11 @@ export default class SearchBar extends Component {
     return (
       <SearchContainer>
         <Form onSubmit={this.searchSubmit}>
-          <Input 
-          value={this.state.inputValue} 
-          onChange={this.onInputChange} 
-          placeholder="Enter a city" />
+          <Input
+            value={this.state.inputValue}
+            onChange={this.onInputChange}
+            placeholder="Enter a city"
+          />
           <Button>Submit</Button>
         </Form>
       </SearchContainer>

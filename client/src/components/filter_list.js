@@ -1,5 +1,20 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
+const FilterContainer = styled.div`
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+`;
+
+const Button = styled.button`
+  font-size: 0.8rem;
+  color: #fefefe;
+  border-radius: 0.5rem;
+  border-style: none;
+  background-color: rgb(2, 112, 230);
+  height: 100%;
+  margin: 0 3px;
+`;
 export default class FilterList extends Component {
   constructor(props) {
     super(props);
@@ -25,14 +40,14 @@ export default class FilterList extends Component {
 
   render() {
     return (
-      <div>
+      <FilterContainer>
         <label>
           Filter By:
-          <button onClick={this.clearFilter}>All</button>
-          <button onClick={this.activeFilter}>Active</button>
-          <button onClick={this.inactiveFilter}>In Active</button>
+          <Button onClick={this.clearFilter}>None</Button>
+          <Button onClick={this.activeFilter}>Active</Button>
+          <Button onClick={this.inactiveFilter}>Inactive</Button>
         </label>
-      </div>
+      </FilterContainer>
     );
   }
 }
