@@ -13,13 +13,14 @@ const Img = styled.img`
 `;
 
 const StashCard = props => {
-  const { name, status, location, photoUrl } = props;
+  const { name, status, location, photoUrl, capacity } = props;
   return (
     <CardContainer>
       <Img src={photoUrl} alt={name} />
       <p>{name}</p>
       <p>{status}</p>
       <p>{location}</p>
+      <p>Capacity:{capacity}</p>
     </CardContainer>
   );
 };

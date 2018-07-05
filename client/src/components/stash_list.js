@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SortList from './sort_dropdown';
+import FilterList from './filter_list';
 import StashCard from './stash_card';
 
 const ListContainer = styled.ul`
@@ -22,6 +23,7 @@ const StashList = props => {
         status={stashpoint.status}
         location={stashpoint.location_name}
         photoUrl={stashpoint.photos[0]}
+        capacity={stashpoint.capacity}
       />
     );
   });
@@ -30,11 +32,16 @@ const StashList = props => {
   // Only render sorting list if more than one result has been returned
   return (
     <div>
-      {props.stashPoints.length > 1 && <SortList sortList={props.sortList} />}
-      {props.stashPoints.length > 0 ? (
-        <ListContainer>{cardList}</ListContainer>
-      ) : (
+      {props.stashPoints.length > 1 && (
+        <div>
+          <FilterList filterList={props.listFilter} />
+          <SortList sortList={props.listSort} />
+        </div>
+      )}
+      {Object.keys(props.error).length > 0 ? (
         <p>{props.error.city}</p>
+      ) : (
+        <ListContainer>{cardList}</ListContainer>
       )}
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import queryString from 'query-string';
 
 import apiFetch from './utils/api_fetch';
 
@@ -16,23 +17,32 @@ class App extends Component {
     super(props);
     this.state = {
       stashPoints: [],
-      city: null,
-      error: {
-        fetch: null,
-        city: null
-      }
+      query: {
+        city: undefined,
+        sort: undefined
+      },
+      error: {}
     };
   }
 
   citySearch = searchValue => {
     // Use search value to make an API call using city query
-    const fetchUrl = `https://api-staging.stasher.com/v1/stashpoints?city=${searchValue}`;
+    this.setState({ query: { city: searchValue } }, () => {
+      this.apiCall(this.state.query);
+    });
+  };
+
+  apiCall = queryObject => {
+    const apiUrl = `https://api-staging.stasher.com/v1/stashpoints?`;
+    const query = queryString.stringify(this.state.query);
+    const fetchUrl = `${apiUrl}${query}`;
+    console.log(this.state);
 
     apiFetch(fetchUrl)
       .then(data => {
         // data is an array of stashpoints received from API
         if (data.length > 0) {
-          this.setState({ stashPoints: data, city: searchValue });
+          this.setState({ stashPoints: data, error: {} });
         } else {
           this.setState({
             error: { city: 'Your search returned no results' }
@@ -47,18 +57,37 @@ class App extends Component {
   };
 
   listSort = selectedValue => {
-    // switch which takes selected option from dropdown list the create Api search query
-    const { city } = this.state;
-    const fetchUrl = `https://api-staging.stasher.com/v1/stashpoints?city=${city}`;
-    if (selectedValue === 'default') {
-      apiFetch(fetchUrl).then(data => {
-        this.setState({ stashPoints: data });
-      });
-    } else {
-      apiFetch(`${fetchUrl}&sort=${selectedValue}`).then(data => {
-        this.setState({ stashPoints: data });
-      });
-    }
+    // switch which takes selected option from dropdown list to create Api search query
+    this.setState(
+      ({ query }) => {
+        return {
+          query: {
+            ...query,
+            sort: selectedValue
+          }
+        };
+      },
+      () => {
+        this.apiCall(this.state.query);
+      }
+    );
+  };
+
+  listFilter = selectedValue => {
+    // switch which takes selected option from filters list to create Api search query
+    this.setState(
+      ({ query }) => {
+        return {
+          query: {
+            ...query,
+            ...selectedValue
+          }
+        };
+      },
+      () => {
+        this.apiCall(this.state.query);
+      }
+    );
   };
 
   render() {
@@ -67,7 +96,8 @@ class App extends Component {
         <SearchBar onSearchSubmit={this.citySearch} />
         <StashList
           stashPoints={this.state.stashPoints}
-          sortList={this.listSort}
+          listSort={this.listSort}
+          listFilter={this.listFilter}
           error={this.state.error}
         />
         {this.state.error.fetch && <p>this.state.error.fetch</p>}
