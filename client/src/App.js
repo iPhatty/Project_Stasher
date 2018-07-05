@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import queryString from 'query-string';
+import qs from 'qs';
 
 import apiFetch from './utils/api_fetch';
 
@@ -39,7 +39,7 @@ class App extends Component {
 
   apiCall = queryObject => {
     const apiUrl = `https://api-staging.stasher.com/v1/stashpoints?`;
-    const query = queryString.stringify(this.state.query);
+    const query = qs.stringify(this.state.query);
     const fetchUrl = `${apiUrl}${query}`;
     console.log(this.state);
 
