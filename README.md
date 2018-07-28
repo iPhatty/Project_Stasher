@@ -2,6 +2,14 @@
 
 Boilerplate used : [Create React App](https://github.com/facebook/create-react-app);
 
+## To run locally:
+```
+cd client
+
+npm install
+
+npm start
+```
 ## Hosted on netlify by:
 
 ```
